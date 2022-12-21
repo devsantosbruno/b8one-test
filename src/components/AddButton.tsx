@@ -9,21 +9,21 @@ export function AddButton({
   priceCurrently,
   productImage,
 }: ProductProps) {
-  const { productCart, setCartProducts } = useContext(ShoppingCartContext);
+  const { productsCart, setCartProducts } = useContext(ShoppingCartContext);
 
-  const addOrNot = productCart.some((item) => item.id === id);
+  const isAdded = productsCart.some((item) => item.id === id);
 
   return (
     <button
       onClick={() => {
-        const idsRemove = productCart.filter((item) => {
+        const idsRemove = productsCart.filter((item) => {
           return item.id !== id;
         });
 
-        addOrNot
+        isAdded
           ? setCartProducts(idsRemove)
           : setCartProducts([
-              ...productCart,
+              ...productsCart,
               {
                 id: id,
                 productName: productName,
@@ -33,15 +33,15 @@ export function AddButton({
             ]);
       }}
       className={`w-full font-bold p-3 rounded-[5px] flex items-center justify-center gap-4 ${
-        addOrNot
+        isAdded
           ? "bg-green-100 text-gray-900"
           : "bg-green-400 text-white hover:bg-green-600 transition duration-200"
       } `}
     >
-      <div className={`${addOrNot ? "visible" : "hidden"}`}>
+      <div className={`${isAdded ? "visible" : "hidden"}`}>
         <Check size={24} className="text-gray-900" />
       </div>
-      {addOrNot ? "ADICIONADO" : "ADICIONAR"}
+      {isAdded ? "ADICIONADO" : "ADICIONAR"}
     </button>
   );
 }

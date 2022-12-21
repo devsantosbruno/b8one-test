@@ -9,21 +9,21 @@ export function SaveButton({
   priceCurrently,
   productImage,
 }: ProductProps) {
-  const { saved, setSaved } = useContext(ShoppingCartContext);
+  const { favorites, setFavorites } = useContext(ShoppingCartContext);
 
-  const addOrNot = saved.some((item) => item.id === id);
+  const isFavorited = favorites.some((item) => item.id === id);
 
   return (
     <button
       onClick={() => {
-        const idsRemove = saved.filter((item) => {
+        const idsRemove = favorites.filter((item) => {
           return item.id !== id;
         });
 
-        addOrNot
-          ? setSaved(idsRemove)
-          : setSaved([
-              ...saved,
+        isFavorited
+          ? setFavorites(idsRemove)
+          : setFavorites([
+              ...favorites,
               {
                 id: id,
                 productName: productName,
@@ -33,12 +33,12 @@ export function SaveButton({
             ]);
       }}
       className={`absolute right-0 top-0 p-2 rounded-full transition duration-200 ${
-        addOrNot
+        isFavorited
           ? "bg-red-500 text-white hover:bg-red-600"
           : "bg-gray-200 text-gray-900 hover:bg-pink-100 hover:text-red-500"
       }`}
     >
-      <Heart size={32} weight={`${addOrNot ? "fill" : "thin"}`} />
+      <Heart size={32} weight={`${isFavorited ? "fill" : "thin"}`} />
     </button>
   );
 }

@@ -3,10 +3,10 @@ import { ProductProps } from "../components/Product";
 
 interface idCart {
   setCartProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>;
-  productCart: ProductProps[];
+  productsCart: ProductProps[];
 
-  setSaved: React.Dispatch<React.SetStateAction<ProductProps[]>>;
-  saved: ProductProps[];
+  setFavorites: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+  favorites: ProductProps[];
 }
 
 interface ShoppingCartProviderProps {
@@ -16,12 +16,12 @@ interface ShoppingCartProviderProps {
 export const ShoppingCartContext = createContext({} as idCart);
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [productCart, setCartProducts] = useState<ProductProps[]>([]);
-  const [saved, setSaved] = useState<ProductProps[]>([]);
+  const [productsCart, setCartProducts] = useState<ProductProps[]>([]);
+  const [favorites, setFavorites] = useState<ProductProps[]>([]);
 
   return (
     <ShoppingCartContext.Provider
-      value={{ setCartProducts, productCart, setSaved, saved }}
+      value={{ setCartProducts, productsCart, setFavorites, favorites }}
     >
       {children}
     </ShoppingCartContext.Provider>

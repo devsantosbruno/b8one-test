@@ -28,12 +28,13 @@ export function App() {
     },
   ]);
 
-  const { saved, productCart } = useContext(ShoppingCartContext);
+  const { favorites, productsCart } = useContext(ShoppingCartContext);
 
   useEffect(() => {
-    console.log("Saved ==> ", saved);
-    console.log("Cart ==> ", productCart);
-  }, [saved, productCart]);
+    // to show favorites and cart list on add to product or favorite
+    console.log("Favorite list ==> ", favorites);
+    console.log("Cart list ==> ", productsCart);
+  }, [favorites, productsCart]);
 
   return (
     <div className="bg-[#E5E5E5] max-w-screen min-h-screen flex items-center justify-center p-8">
