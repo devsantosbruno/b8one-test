@@ -1,4 +1,3 @@
-import productImage from "../assets/product.png";
 import { AddButton } from "../components/AddButton";
 import { SaveButton } from "../components/SaveButton";
 
@@ -7,6 +6,7 @@ export interface ProductProps {
   productName: string;
   priceOld?: number;
   priceCurrently: number;
+  productImage?: string;
 }
 
 export function Product(props: ProductProps) {
@@ -29,7 +29,7 @@ export function Product(props: ProductProps) {
             priceCurrently={props.priceCurrently}
           />
 
-          <img src={productImage} alt="" />
+          <img src={props.productImage} alt="" />
         </figure>
 
         <p className="text-gray-900 mb-6 font-medium text-sm mt-8">
@@ -38,7 +38,7 @@ export function Product(props: ProductProps) {
       </div>
 
       <div>
-        <p className="text-gray-600 text-sm">
+        <p className="text-gray-600 text-sm line-through">
           {formatter.format(props.priceOld!)}
         </p>
         <p className="text-red-500 text-2xl my-1">
