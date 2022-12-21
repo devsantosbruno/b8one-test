@@ -3,7 +3,12 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 import { ProductProps } from "./Product";
 
-export function SaveButton({ id, productName, priceCurrently }: ProductProps) {
+export function SaveButton({
+  id,
+  productName,
+  priceCurrently,
+  productImage,
+}: ProductProps) {
   const { saved, setSaved } = useContext(ShoppingCartContext);
 
   const addOrNot = saved.some((item) => item.id === id);
@@ -23,6 +28,7 @@ export function SaveButton({ id, productName, priceCurrently }: ProductProps) {
                 id: id,
                 productName: productName,
                 priceCurrently: priceCurrently,
+                productImage: productImage,
               },
             ]);
       }}

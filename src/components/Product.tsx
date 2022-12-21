@@ -27,6 +27,7 @@ export function Product(props: ProductProps) {
             id={props.id}
             productName={props.productName}
             priceCurrently={props.priceCurrently}
+            productImage={props.productImage}
           />
 
           <img src={props.productImage} alt="" />
@@ -57,6 +58,7 @@ export function Product(props: ProductProps) {
             id={props.id}
             productName={props.productName}
             priceCurrently={props.priceCurrently}
+            productImage={props.productImage}
           />
         </div>
       </div>

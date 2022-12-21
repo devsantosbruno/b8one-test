@@ -3,7 +3,12 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 import { ProductProps } from "./Product";
 
-export function AddButton({ id, productName, priceCurrently }: ProductProps) {
+export function AddButton({
+  id,
+  productName,
+  priceCurrently,
+  productImage,
+}: ProductProps) {
   const { productCart, setCartProducts } = useContext(ShoppingCartContext);
 
   const addOrNot = productCart.some((item) => item.id === id);
@@ -23,6 +28,7 @@ export function AddButton({ id, productName, priceCurrently }: ProductProps) {
                 id: id,
                 productName: productName,
                 priceCurrently: priceCurrently,
+                productImage: productImage,
               },
             ]);
       }}
