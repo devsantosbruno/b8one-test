@@ -2,9 +2,10 @@ import productImage from "../assets/product.png";
 import { AddButton } from "../components/AddButton";
 import { SaveButton } from "../components/SaveButton";
 
-interface ProductProps {
+export interface ProductProps {
+  id: number;
   productName: string;
-  priceOld: number;
+  priceOld?: number;
   priceCurrently: number;
 }
 
@@ -22,7 +23,11 @@ export function Product(props: ProductProps) {
     <div className="bg-white p-8 max-w-[304px] rounded-lg flex flex-col justify-between hover:drop-shadow-[0_8px_8px_rgba(0,0,0,0.08)] transition duration-200">
       <div>
         <figure className="relative">
-          <SaveButton />
+          <SaveButton
+            id={props.id}
+            productName={props.productName}
+            priceCurrently={props.priceCurrently}
+          />
 
           <img src={productImage} alt="" />
         </figure>
@@ -34,7 +39,7 @@ export function Product(props: ProductProps) {
 
       <div>
         <p className="text-gray-600 text-sm">
-          {formatter.format(props.priceOld)}
+          {formatter.format(props.priceOld!)}
         </p>
         <p className="text-red-500 text-2xl my-1">
           {formatter.format(props.priceCurrently)}
@@ -48,7 +53,11 @@ export function Product(props: ProductProps) {
         </p>
 
         <div className="mt-8">
-          <AddButton />
+          <AddButton
+            id={props.id}
+            productName={props.productName}
+            priceCurrently={props.priceCurrently}
+          />
         </div>
       </div>
     </div>
